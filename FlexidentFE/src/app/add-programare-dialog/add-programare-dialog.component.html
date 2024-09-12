@@ -1,0 +1,55 @@
+<h1 mat-dialog-title>Adaugă o programare</h1>
+<div mat-dialog-content>
+  <form class="form-fields" [formGroup]="addForm">
+    <!-- Pacient -->
+    <mat-form-field appearance="fill">
+      <mat-label>Pacient</mat-label>
+      <input type="text" matInput [matAutocomplete]="autoPacient" formControlName="pacientSearch">
+      <mat-autocomplete #autoPacient="matAutocomplete" (optionSelected)="onPacientSelected($event)">
+        <mat-option *ngFor="let pacient of filteredPacients | async" [value]="pacient.pacientId">
+          {{ pacient.name }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <!-- Doctor -->
+    <mat-form-field appearance="fill">
+      <mat-label>Doctor</mat-label>
+      <input type="text" matInput [matAutocomplete]="autoDoctor" formControlName="doctorSearch">
+      <mat-autocomplete #autoDoctor="matAutocomplete" (optionSelected)="onDoctorSelected($event)">
+        <mat-option *ngFor="let doctor of filteredUsers | async" [value]="doctor.userId">
+          {{ doctor.firstName }} {{ doctor.lastName }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <!-- Lucrare -->
+    <mat-form-field appearance="fill">
+      <mat-label>Lucrare</mat-label>
+      <input type="text" matInput [matAutocomplete]="autoLucrare" formControlName="lucrareSearch">
+      <mat-autocomplete #autoLucrare="matAutocomplete" (optionSelected)="onLucrareSelected($event)">
+        <mat-option *ngFor="let lucrare of filteredLucrari | async" [value]="lucrare.lucrareId">
+          {{ lucrare.numeLucrare }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <!-- Date & Time -->
+    <mat-form-field appearance="fill">
+      <mat-label>Data Programarii</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Ora Programarii</mat-label>
+      <input matInput type="time" formControlName="time">
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button color="primary" (click)="onSave()">Adaugă</button>
+  <button mat-button (click)="onCancel()">Anulează</button>
+</div>

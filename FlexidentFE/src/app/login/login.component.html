@@ -1,0 +1,36 @@
+
+<div class="container">
+<div class="login-container">
+  <mat-card appearance="outlined">
+    <mat-card-content>
+    <mat-card-title class="card-title">Logare Flexident</mat-card-title>
+    <div class="login-form">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="login-fields">
+    <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" plasceholder="Enter your username">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Parola</mat-label>
+      <input matInput [type]="'password'" formControlName="password" placeholder="Parola">
+    </mat-form-field>
+    <button class="button" mat-raised-button color="accent" type="submit" [disabled]="loginForm.invalid">Login</button>
+  </div>
+  </form>
+  
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+  
+ 
+  <div class="form-buttons">
+  <a class="redirect-btn" [routerLink]="['/register']">Creează un cont!</a>
+  <a class="redirect-btn" [routerLink]="['/helpingpage']">Ai uitat parola?</a>
+  </div>
+</div>
+</mat-card-content>
+</mat-card>
+
+</div>

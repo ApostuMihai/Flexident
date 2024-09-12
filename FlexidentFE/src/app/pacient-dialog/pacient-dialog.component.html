@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>Adaugă un pacient nou</h2>
+<mat-dialog-content>
+  <form [formGroup]="pacientForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Nume</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Telefon</mat-label>
+      <input matInput formControlName="phone">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Vârstă</mat-label>
+      <input matInput formControlName="age" type="number">
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" (click)="onSubmit()">Salvează</button>
+  <button mat-button (click)="onCancel()">Anulează</button>
+</mat-dialog-actions>

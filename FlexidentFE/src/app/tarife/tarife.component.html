@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="lucrari">
+<div *ngFor="let lucrare of lucrari">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ lucrare.numeLucrare }}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ lucrare.pretLucrare }} RON
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>{{ lucrare.descriereLucrare }}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <br>
+  </div>
+  </div>
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Vreau mai multe detalii</mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-card-content>
+        <p>Consultațiile stomatologice sunt esențiale pentru menținerea unei sănătăți orale optime. În cadrul unei consultații, medicul stomatolog va evalua starea dinților și a gingiilor, oferind recomandări personalizate pentru tratamente viitoare. Este important ca aceste consultații să fie realizate periodic pentru prevenirea afecțiunilor dentare.</p>
+    
+        <p>Tehnologiile moderne, precum imagistica digitală sau scanarea 3D, permit o evaluare precisă și detaliată a structurii dinților. Aceste proceduri sunt nedureroase și oferă rezultate rapide, facilitând astfel diagnosticarea și planificarea tratamentului în cel mai scurt timp posibil.</p>
+    
+        <p>De asemenea, procedurile de estetică dentară, cum ar fi albirea profesională a dinților sau fațetele dentare, au devenit din ce în ce mai populare. Acestea îmbunătățesc atât aspectul, cât și funcționalitatea zâmbetului, oferind pacienților mai multă încredere în sine.</p>
+    
+        <p>Indiferent de tipul procedurii alese, fie că este vorba de tratamente profilactice sau de estetică, este important să urmezi sfaturile și recomandările medicului stomatolog pentru a menține rezultatele pe termen lung și a preveni posibilele complicații.</p>
+    </mat-card-content>
+    
+      </mat-card-content>
+  </mat-card>
+</div>

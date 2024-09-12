@@ -1,0 +1,15 @@
+.lucrari{
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+mat-card{
+    width: 700px;
+    margin-left: 20px;
+    background-color: #f0f5ff;
+}

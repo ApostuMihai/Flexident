@@ -1,0 +1,82 @@
+  <div class="container">
+  <div class="register-container">
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <mat-card-title class="card-title">Înregistrare Flexident</mat-card-title>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="reg-form-columns">
+          <div class="reg-form-left-col">
+            <mat-form-field class="custom-form-text">
+              <mat-label class="custom-form-text">Email</mat-label>
+              <input type="email" matInput formControlName="email">
+              <mat-error *ngIf="registerForm.get('email')?.hasError('required')">Câmp obligatoriu</mat-error>
+              <mat-error *ngIf="registerForm.get('email')?.hasError('email')">Câmp obligatoriu</mat-error>
+            </mat-form-field>
+  
+            <mat-form-field class="custom-form-text">
+              <mat-label class="custom-form-text">Username</mat-label>
+              <input matInput formControlName="username">
+              <mat-error *ngIf="registerForm.get('username')?.hasError('required')">Câmp obligatoriu</mat-error>
+            </mat-form-field>
+  
+            <mat-form-field class="custom-form-text">
+              <mat-label class="custom-form-text">Parolă</mat-label>
+              <input type="password" matInput formControlName="password">
+              <mat-error *ngIf="registerForm.get('password')?.hasError('required')">Câmp obligatoriu</mat-error>
+              <mat-error *ngIf="registerForm.get('password')?.hasError('minlength')">Câmp obligatoriu</mat-error>
+            </mat-form-field>
+  
+            <mat-form-field class="custom-form-text">
+              <mat-label class="custom-form-text">Repetă parola</mat-label>
+              <input type="password" matInput formControlName="confirmPassword">
+              <mat-error *ngIf="registerForm.hasError('mismatch')">Câmp obligatoriu</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="reg-form-right-col">
+            <mat-form-field class="custom-form-text">
+              <mat-label class="custom-form-text">Nume</mat-label>
+              <input matInput formControlName="firstName">
+              <mat-error *ngIf="registerForm.get('firstName')?.hasError('required')">Câmp obligatoriu</mat-error>
+            </mat-form-field>
+  
+            <mat-form-field class="custom-form-text">
+              <mat-label class="custom-form-text">Prenume</mat-label>
+              <input matInput formControlName="lastName">
+              <mat-error *ngIf="registerForm.get('lastName')?.hasError('required')">Câmp obligatoriu</mat-error>
+            </mat-form-field>
+  
+            <mat-form-field class="custom-form-text">
+              <mat-label class="custom-form-text">Rol</mat-label>
+              <mat-select formControlName="role">
+                <mat-option class="custom-form-option" value="1">Doctor</mat-option>
+                <mat-option class="custom-form-option" value="2">Asistent</mat-option>
+              </mat-select>
+              <mat-error *ngIf="registerForm.get('role')?.hasError('required')">Câmp obligatoriu</mat-error>
+            </mat-form-field>
+  
+            <mat-form-field class="custom-form-text">
+              <mat-label class="custom-form-text">Data nașterii</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="birthDate">
+              <mat-hint>DD/MM/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="registerForm.get('birthDate')?.hasError('required')">Câmp obligatoriu</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="reg-form-buttons">
+        <button class="register-button" mat-raised-button color="accent" type="submit" [disabled]="registerForm.invalid">Înregistrare</button>
+        <a class="redirect-btn" [routerLink]="['/login']">Ai deja un cont?</a>
+      </div>
+      </form>
+
+  </mat-card-content>
+</mat-card>
+
+
+</div>
+</div>
+
+
+

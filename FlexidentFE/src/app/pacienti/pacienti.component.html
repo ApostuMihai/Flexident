@@ -1,0 +1,66 @@
+<div>
+  <button class="pacient-add-btn" mat-raised-button color="primary" (click)="openDialog()">Adaugă un pacient nou</button>
+</div>
+
+<div *ngIf="pacients.length > 0">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nume </th>
+      <td mat-cell *matCellDef="let pacient"> {{pacient.name}} </td>
+    </ng-container>
+
+    <!-- Phone Column -->
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef> Telefon </th>
+      <td mat-cell *matCellDef="let pacient"> {{pacient.phone}} </td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let pacient"> {{pacient.email}} </td>
+    </ng-container>
+
+    <!-- Age Column -->
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef> Vârstă </th>
+      <td mat-cell *matCellDef="let pacient"> {{pacient.age}} </td>
+    </ng-container>
+    
+
+    <!-- Actiuni Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef class="mat-column-actiuni"> Acțiuni </th>
+      <td mat-cell *matCellDef="let pacient" class="mat-column-actiuni">
+        <button matTooltip="Editează pacientul" class="edit-button" mat-icon-button  (click)="openEditDialog(pacient)">
+          <mat-icon >edit</mat-icon>
+        </button>
+        <button matTooltip="Descarcă fișa medicală" class="download-button" mat-icon-button  (click)="downloadFile(pacient)">
+          <mat-icon>download</mat-icon>
+        </button>
+        <!-- Delete Button -->
+        <button matTooltip="Șterge pacientul" class="trash-button" mat-icon-button  (click)="openDeleteDialog(pacient)">
+          <mat-icon>delete</mat-icon>
+        </button>
+
+      </td>
+    </ng-container>
+
+    <!-- Header and Row Declarations -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator
+    [length]="totalPatients"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[5, 10, 20]"
+    (page)="onPageChange($event)">
+  </mat-paginator>
+</div>
+
+<div *ngIf="pacients.length === 0">
+  <p>No patients found.</p>
+</div>

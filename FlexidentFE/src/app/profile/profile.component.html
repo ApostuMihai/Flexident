@@ -1,0 +1,24 @@
+<mat-card *ngIf="user">
+    <div class="card-container">
+    <mat-card-header>
+      <mat-card-title>{{ user.username }}</mat-card-title>
+      <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <p><strong>Nume:</strong> {{ user.firstName }} {{ user.lastName }}</p>
+      <p><strong>Telefon:</strong> {{ user.phone }}</p>
+      <p><strong>Data nașterii:</strong> {{ user.birthDate | date }}</p>
+      <p><strong>Rol:</strong> {{ getUserRole(user.userRole) }}</p>
+      <p><strong>Descriere:</strong> {{ user.description }}</p>
+    </mat-card-content>
+  
+    <!-- This will be the future edit button -->
+    <mat-card-actions class="mat-actions">
+      <button   mat-raised-button color="primary" (click)="openEditDialog()">Editează profilul</button>
+      <button mat-raised-button color="accent" (click)="openResetPasswordDialog()">Resetează Parola</button>
+
+    </mat-card-actions>
+    </div>  
+  </mat-card>
+  

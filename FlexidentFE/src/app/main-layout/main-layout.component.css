@@ -1,0 +1,32 @@
+.sidenav-container {
+    height: 100%;
+}
+mat-sidenav {
+      background-color: #f0f5ff;
+    width: 200px;
+  }
+  mat-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+.side-nav-buttons{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.nav-first, .nav-second{
+  display:flex;
+  flex-direction: column;
+}
+.nav-buttons{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 99%;
+}
+
+/* .nav-button{
+    font-size: 2rem;
+} */
+  

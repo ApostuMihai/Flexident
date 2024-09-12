@@ -1,0 +1,35 @@
+.green-icon {
+    color: green;
+  }
+  .date-controls {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .dark-green-background {
+    background-color: rgba(0, 100, 0, 0.65);
+    color: white; /* Optional: Set text color to white for better contrast */
+  }
+  .white-buttons {
+    color: white;
+  }  
+  .trash-button:hover {
+    color: red;
+  }  
+  .edit-button:hover{
+    color: blue;
+  }
+  .done-button:hover{
+    color: darkgreen;
+  }
+  .white-buttons:disabled{
+    color: gray;
+  }
+
+  .download-button:hover{
+    color: darkgreen;
+  }
+
+  .pacient-add-btn{
+    margin-bottom: 25px;
+  }

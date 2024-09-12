@@ -1,0 +1,29 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav class="side-nav-buttons"  mode="side" opened>
+     <div class="nav-buttons">
+        <div class="nav-first ">
+      <button class="nav-button" mat-button routerLink="/dashboard">Dashboard</button>
+      <button class="nav-button" mat-button routerLink="/programari">Programări</button>
+      <button class="nav-button" mat-button routerLink="/pacienti">Pacienți</button>
+      <button class="nav-button" mat-button routerLink="/tarife">Tarife</button>
+      <button class="nav-button" mat-button routerLink="/personal">Personal</button>
+      <button *ngIf="isAdmin" class="nav-button" mat-button routerLink="/admin">Admin</button>
+    </div>
+    <div class="nav-second ">
+      <button class="nav-button" mat-button routerLink="/profil">Profil</button>
+      <button class="nav-button" mat-button (click)="logout()">Logout</button>
+    </div>
+    </div>
+
+      <!-- Add more navigation items here -->
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+       
+      </mat-toolbar>
+  
+      <!-- Router outlet to load child routes -->
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

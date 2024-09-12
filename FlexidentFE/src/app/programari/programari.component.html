@@ -1,0 +1,85 @@
+<div class="controls">
+<div class="date-controls">
+    <button mat-icon-button (click)="prevDay()">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    
+    
+    <mat-form-field appearance="fill">
+      <mat-label>Data programarii</mat-label>
+      <!-- Update the date format using Angular's DatePipe -->
+      <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" 
+             [ngModelOptions]="{ updateOn: 'blur' }"
+             [value]="selectedDate | date:'dd/MM/yy'"
+             (dateChange)="onDateChange($event)">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  
+    <button mat-icon-button (click)="nextDay()">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+  <div class="add-programare">
+    <button class="btn-add-programare" mat-raised-button color="primary" (click)="openAddProgramareDialog()">
+      Adaugă o programare nouă
+    </button>
+  </div>
+</div>
+  
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Table Row Definition with Conditional Class -->
+    <mat-row *matRowDef="let row; columns: displayedColumns;"
+             [ngClass]="{'dark-green-background': row.programareEfectuata}">
+    </mat-row>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="pacient">
+      <mat-header-cell *matHeaderCellDef> Pacient </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.pacient.name}} </mat-cell>
+    </ng-container>
+  
+    <!-- Ora Programare Column -->
+    <ng-container matColumnDef="oraProgramare">
+      <mat-header-cell *matHeaderCellDef> Data & ora </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.oraProgramare | date:'dd/MM/yy, h:mm a'}} </mat-cell>
+    </ng-container>
+  
+    <!-- Doctor Name Column -->
+    <ng-container matColumnDef="doctor">
+      <mat-header-cell *matHeaderCellDef> Doctor </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{getDoctorName(element)}} </mat-cell>
+    </ng-container>
+
+    <!-- Lucrare Column -->
+  <ng-container matColumnDef="lucrare">
+    <mat-header-cell *matHeaderCellDef> Lucrare </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.lucrare.numeLucrare}} </mat-cell>
+  </ng-container>
+  
+  <ng-container matColumnDef="actiuni">
+    <mat-header-cell *matHeaderCellDef> Acțiuni </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button matTooltip="Editeaza programarea" class="edit-button" mat-icon-button [disabled]="element.programareEfectuata" [ngClass]="{'white-buttons': element.programareEfectuata}" (click)="onEdit(element)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button matTooltip="Finalizeaza programarea" class="done-button" mat-icon-button [disabled]="element.programareEfectuata" [ngClass]="{'white-buttons': element.programareEfectuata}" (click)="onDone(element)">
+        <mat-icon>done</mat-icon>
+      </button>
+      <button matTooltip="Sterge programarea" class="trash-button" mat-icon-button [ngClass]="{'white-buttons': element.programareEfectuata}" (click)="onDelete(element)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  </mat-table>
+  
+  
+  
+  <mat-paginator [length]="totalRecords"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="[5, 10, 20]"
+                 (page)="onPageChange($event)">
+  </mat-paginator>
+  

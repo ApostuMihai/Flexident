@@ -1,0 +1,33 @@
+<div class="form-container">
+<h2 mat-dialog-title>Editează profilul</h2>
+
+<form [formGroup]="editForm">
+    <div class="form-fields">
+  <mat-form-field appearance="fill">
+    <mat-label>Nume</mat-label>
+    <input matInput formControlName="firstName" placeholder="First Name" />
+    <input matInput formControlName="lastName" placeholder="Last Name" />
+    <mat-error *ngIf="editForm.get('firstName')">First Name is required</mat-error>
+    <mat-error *ngIf="editForm.get('lastName')">Last Name is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Telefon</mat-label>
+    <input matInput formControlName="phone" placeholder="Phone Number" />
+    <mat-error *ngIf="editForm.get('phone')">Phone is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Descriere</mat-label>
+    <textarea matInput formControlName="description" placeholder="Description"></textarea>
+    <mat-error *ngIf="editForm.get('description')">Description is required</mat-error>
+  </mat-form-field>
+</div>
+</form>
+
+<div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="onSave()">Salvează</button>
+  <button mat-button (click)="onCancel()">Anulează</button>
+</div>
+
+</div>
